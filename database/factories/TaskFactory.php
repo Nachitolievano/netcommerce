@@ -14,10 +14,16 @@ class TaskFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
-        return [
-            //
-        ];
-    }
+   public function definition(): array
+{
+    return [
+        'company_id' => \App\Models\Company::factory(),
+        'user_id' => \App\Models\User::factory(),
+        'name' => fake()->sentence(3),
+        'description' => fake()->paragraph(),
+        'is_completed' => fake()->boolean(),
+        'start_at' => now(),
+        'expired_at' => now()->addDays(3),
+    ];
+}
 }
